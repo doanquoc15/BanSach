@@ -1,0 +1,59 @@
+﻿@model ModelFE.EF.Category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2><i class="far fa-trash-alt" style="color:red; font-size: 20px">&nbsp;Xóa thể loại </i></h2>
+<hr />
+
+<h3>Mục muốn xóa</h3>
+<div>
+    <div class="dl-horizontal">
+        <b>
+            @Html.DisplayNameFor(model => model.IDCate)
+        </b>
+
+        <p>
+            @Html.DisplayFor(model => model.IDCate)
+        </p>
+
+    </div>
+
+    <div class="dl-horizontal">
+        <b>
+            @Html.DisplayNameFor(model => model.Name)
+        </b>
+
+        <p>
+            @Html.DisplayFor(model => model.Name)
+        </p>
+
+    </div>
+    <div class="dl-horizontal">
+        <b>
+            @Html.DisplayNameFor(model => model.Description)
+        </b>
+
+        <p>
+            @Html.DisplayFor(model => model.Description)
+        </p>
+
+    </div>
+    @* Xóa thể loại -> Nếu chọn Xóa thể loại *@
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" id="id" value="@Model.IDCate" />
+
+        <div class=" col md-6 form-actions no-color" style="display:flex;flex-wrap:nowrap">
+            @* Xóa *@
+            <input type="submit" value="Xóa thể loại" class="btn btn-success" style="margin-right: 40px;color:black; background: pink" />
+            @* Quay lại *@
+             @Html.ActionLink("Quay lại", "Index", "Customer", new { @class = "btn btn-warning" })
+        </div>
+    }
+</div>
+

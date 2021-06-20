@@ -1,0 +1,81 @@
+﻿
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<ModelFE.EF.UserAccount>
+
+
+@{
+    ViewBag.Title = "Quản lí người dùng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section header{
+    <i class="fa fa-user-alt" style="color: red">&nbsp;Quản Lý Người Dùng</i>
+}
+
+<hr />
+
+@using (Html.BeginForm("Index", "User", FormMethod.Post))
+{
+    <div class="col-lg-12 form-group" style="display:flex; flex-wrap:nowrap">
+        <div class="col-md-6" style="margin-right:60px">
+            @Html.ActionLink("Tạo mới", "Create", "User", new { @class = "btn btn-danger" })
+        </div>
+        <div class="col-md-4">
+            <input type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Nhập từ khóa cần tìm kiếm" class="form-control">
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input style="float:right;" type="submit" value="Tìm kiếm" class="btn btn-success" />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+}
+<div class="col-lg-12 form-group">
+    <table class="table">
+        <tr>
+            <th>STT</th>
+            <th>IDAccount</th>
+            <th>Tên đăng nhập</th>
+            <th>
+                Mật khẩu
+            </th>
+            <th>Trạng thái tài khoản</th>
+            <th>Cấu hình</th>
+        </tr>
+        @{ var i = 1;}
+        @foreach (var item in Model)
+        {
+    <tr id="row_@item.UserName">
+        <td>
+            @i
+        </td>
+        <td>
+            @item.IDAcc
+        </td>
+        <td>
+            @item.UserName
+        </td>
+        <td>
+            @item.Password
+        </td>
+        <td>@item.Status</td>
+        
+        <td>
+            @Ajax.ActionLink("Xóa", "Delete", new { @id = item.UserName }, new AjaxOptions
+       {
+           Confirm = "Bạn có muốn xóa bản ghi này?",
+           OnComplete = "$('#row_"+@item.UserName+"').remove()",
+           HttpMethod = "Delete"
+       }, new { @class = "glyphicon glyphicon-trash" })
+
+        </td>
+    </tr>
+            i++;
+        }
+
+    </table>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+
+    

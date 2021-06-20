@@ -1,0 +1,65 @@
+﻿@model ModelFE.EF.UserAccount
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 style="color: red;font-size:20px;"><i class="fa fa-plus-square" aria-hidden="true" style="color: green"></i>&nbsp; Thêm Mới Người Dùng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col md-6" >
+        @Html.ActionLink("Quay lại", "Index", "User", new { @class = "btn btn-warning" })
+    </div>
+    <br />
+    <div class="form-group">
+            @Html.LabelFor(model => model.IDAcc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IDAcc, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mời nhập IDAcc" } })
+                @Html.ValidationMessageFor(model => model.IDAcc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Mời nhập mật khẩu" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mời nhập tên đăng nhập" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập trạng thái" } })
+            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input style="float:right;" type="submit" value="Thêm mới" class="btn btn-success" />
+            <br />
+            <br />
+        </div>
+    </div>
+</div>
+}
+
+

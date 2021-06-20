@@ -1,0 +1,55 @@
+﻿@model ModelFE.EF.Category
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2><i class="fa fa-plus" aria-hidden="true" style="color:red; font-size:20px">&nbsp;Thêm Mới Danh Mục</i></h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col md-6">
+        @Html.ActionLink("Trở Về", "Index", "Category", new { @class = "btn btn-warning" })
+    </div>
+    <br />
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDCate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IDCate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mời nhập mã thể loại .. " } })
+                @Html.ValidationMessageFor(model => model.IDCate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mời nhập tên thể loại .. " } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mời mô tả .. " } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input style="float:right;" type="submit" value="Thêm mới" class="btn btn-success" />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+}
+
+

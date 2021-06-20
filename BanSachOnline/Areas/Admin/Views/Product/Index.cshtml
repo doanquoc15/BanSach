@@ -1,0 +1,102 @@
+﻿index4
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<ModelFE.EF.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <i class="fas fa-book-open" style="color:red;">&nbsp;Quản Lý Sản Phẩm</i>
+}
+<hr />
+
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <div class="row = " style="text-align: center;">
+        <div class="col-lg-12">
+            <div class="col-md-2" style="float: left;">
+                @Html.ActionLink("Thêm Sách", "Create", "Product", new { @class = "btn btn-success" })
+            </div>
+            <div class="col-md-8" style="float:left">
+                <input class="form-control" style="border-radius: 3px;" type="text" placeholder="Nhập tên sách cần tìm kiếm..." name="searchName" />
+            </div>
+            <div class=" col-md-2" style="float:left">
+                <button style=" background: pink; color: greenyellow;border: 1px solid red" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-search"></span>  Tìm Kiếm</button>
+            </div>
+        </div>
+    </div>
+    <br />
+}
+
+<table class="table">
+    <tr style="background: grey; color: white;">
+        <th>STT</th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDPro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDCate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+    @{ var i = 1;}
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@i</td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDPro)
+    </td>
+    <td>
+        @(item.Category == null ? "": item.Category.IDCate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.UnitCost)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    @*<td>
+        @Html.DisplayFor(modelItem => item.Image)
+    </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td>
+        <button type="button" class="btn btn-warning" style="background: blue; color: white ">@Html.ActionLink("Sửa", "Edit", new { id = item.IDPro })</button>
+        <button type="button" class="btn btn-warning" style="background: red; color: yellow">@Html.ActionLink("Xóa", "Delete", new { id = item.IDPro })</button>
+        <button type="button" class="btn btn-warning" style="background: red; color: yellow">@Html.ActionLink("Xem", "Details", new { id = item.IDPro })</button>
+    </td>
+</tr>
+        i++;
+    }
+
+</table>
+

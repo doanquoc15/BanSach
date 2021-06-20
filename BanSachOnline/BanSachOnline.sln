@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BanSachOnline", "BanSachOnline.csproj", "{06911776-9A40-423E-8AE6-7C426F6F4A11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelFE", "..\ModelFE\ModelFE.csproj", "{630B673A-C4E0-4FA8-9C81-EF5F918AE75F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06911776-9A40-423E-8AE6-7C426F6F4A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06911776-9A40-423E-8AE6-7C426F6F4A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06911776-9A40-423E-8AE6-7C426F6F4A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06911776-9A40-423E-8AE6-7C426F6F4A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{630B673A-C4E0-4FA8-9C81-EF5F918AE75F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{630B673A-C4E0-4FA8-9C81-EF5F918AE75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{630B673A-C4E0-4FA8-9C81-EF5F918AE75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{630B673A-C4E0-4FA8-9C81-EF5F918AE75F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4BD8316-3A8A-4700-BD9B-6CBBF396282D}
+	EndGlobalSection
+EndGlobal
